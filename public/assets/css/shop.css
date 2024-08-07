@@ -1,0 +1,204 @@
+
+.card {
+width: 280px;
+border-radius: 30px;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+overflow: hidden;
+background-color: #fff;
+transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+transform: translateY(-10px);
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+border-radius: 30px;
+height: 200px;
+background-size: cover;
+background-position: center;
+}
+
+.card-body {
+padding: 25px;
+text-align: center;
+}
+
+.btn-primary {
+border-radius: 50px;
+width: 120px;
+background-color: #2d4e2d;
+border: none;
+color: white;
+}
+
+.btn-primary:hover {
+background-color: black;
+}
+
+/* Sidebar Styles */
+.sidebar {
+height: 100%;
+width: 300px;
+position: fixed;
+top: 0;
+right: -300px; /* Hide sidebar by default */
+background-color: #fff;
+box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+overflow-x: hidden;
+transition: 0.3s;
+padding: 20px;
+z-index: 1000;
+}
+
+.sidebar.show {
+right: 0;
+}
+
+.sidebar img {
+height: 50px;
+width: 50px;
+object-fit: cover;
+margin-right: 10px;
+}
+
+.sidebar table {
+width: 100%;
+border-collapse: collapse;
+}
+
+.sidebar th, .sidebar td {
+border: 1px solid #ccc;
+padding: 10px;
+text-align: left;
+}
+
+.sidebar th {
+background-color: #f2f2f2;
+}
+
+.close-sidebar {
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+background: none;
+border: none;
+cursor: pointer;
+color: #2d4e2d;
+}
+.toggle-sidebar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    background-color: #2d4e2d;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.toggle-sidebar:hover {
+    background-color: #648064;
+}
+
+
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+padding: 40px;
+}
+
+.title {
+text-align: center;
+color: #2d4e2d;
+margin-bottom: 40px;
+}
+
+.produit {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 70px;
+}
+
+.button-75 {
+padding: 10px;
+background-color: #2d4e2d;
+color: white;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+}
+
+.button-75:hover {
+background-color: #648064;
+}
+
+.form {
+margin-top: 40px;
+padding: 20px;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form input,
+.form button {
+width: calc(100% - 20px);
+padding: 15px;
+margin: 10px 0;
+border-radius: 5px;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+.form button {
+background-color: #2d4e2d;
+color: rgb(220, 186, 186);
+border: none;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.form button:hover {
+background-color: #648064;
+}
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.counter-btn {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #2d4e2d;
+    background-color: #fff;
+    color: #2d4e2d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.counter-btn:hover {
+    background-color: #2d4e2d;
+    color: white;
+}
+
+.counter {
+    width: 40px;
+    text-align: center;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
