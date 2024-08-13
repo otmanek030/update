@@ -1,105 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Example</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
-    <div>
-        @php
-            include public_path('assets/php/myphp.php');
-        @endphp
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus'></i>
+            <span class="logo_name">AdminPanel</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="openu">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="product">
+                    <i class='bx bx-book-alt'></i>
+                    <span class="link_name">Products</span>
+                </a>
+            </li>
+            <li>
+                <a href="service">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="link_name">Services</span>
+                </a>
+            </li>
+            <li>
+                <a href="aboutus">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">About Us</span>
+                </a>
+            </li>
+            <li>
+                <a href="contacts">
+                    <i class='bx bx-compass'></i>
+                    <span class="link_name">Contact</span>
+                </a>
+            </li>
+            <li>
+                <a href="signin">
+                    <i class='bx bx-history'></i>
+                    <span class="link_name">Sign In</span>
+                </a>
+            </li>
+            <li>
+                <a href="login">
+                    <i class='bx bx-cog'></i>
+                    <span class="link_name">Log In</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="link_name">Logout</span>
+                </a>
+            </li>
+        </ul>
     </div>
-    <div class="up">
-        <div class="title">
-            <H1>Herbal Green</H1>
-            <h1>i am admin</h1>
+
+    <section class="home-section">
+        <nav>
+            <div class="sidebar-button">
+                <i class='bx bx-menu sidebarBtn'></i>
+                <span class="dashboard">Dashboard</span>
+            </div>
+        </nav>
+
+        <div class="home-content">
+            <div class="overview-boxes">
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Orders</div>
+                        <div class="number">40,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from last month</span>
+                        </div>
+                    </div>
+                    <i class='bx bx-cart-alt cart'></i>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Sales</div>
+                        <div class="number">38,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from last month</span>
+                        </div>
+                    </div>
+                    <i class='bx bxs-cart-add cart two'></i>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Profit</div>
+                        <div class="number">$12,876</div>
+                        <div class="indicator">
+                            <i class='bx bx-up-arrow-alt'></i>
+                            <span class="text">Up from last month</span>
+                        </div>
+                    </div>
+                    <i class='bx bx-cart cart three'></i>
+                </div>
+                <div class="box">
+                    <div class="right-side">
+                        <div class="box-topic">Total Return</div>
+                        <div class="number">11,086</div>
+                        <div class="indicator">
+                            <i class='bx bx-down-arrow-alt down'></i>
+                            <span class="text">Down from last month</span>
+                        </div>
+                    </div>
+                    <i class='bx bxs-cart-download cart four'></i>
+                </div>
+            </div>
         </div>
-        <div class="sub">
-             <p class="para">Green presents a curated collection of preserved plant specimens, highlighting nature's beauty and
-                diversity in one unique herbarium.</p>
+    </section>
 
-          {{-- <button class="btn">signup</button> --}}
-        </div>
-
-        <style>
-            body {
-                position: relative;
-                height: 70vh;
-                left: 60px;
-                /* Adjust this value to move more to the left */
-                width: calc(100% - 260px);
-                background-image: url('{{ asset('assets/image/main.png') }}');
-                background-size: cover;
-                /* Ensure the image covers the entire background */
-                background-position: center;
-                /* Center the background image */
-                background-repeat: no-repeat;
-                /* Prevent the image from repeating */
+    <script>
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".sidebarBtn");
+        sidebarBtn.onclick = function () {
+            sidebar.classList.toggle("active");
+            if (sidebar.classList.contains("active")) {
+                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+            } else {
+                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
             }
-
-            .title {
-
-                text-align: center;
-                color: #2d4e2d;
-                padding: 20px;
-                margin: 0;
-                font-size: 30px
-            }
-
-            .up {
-                position: absolute;
-                top: 30%;
-                right: 56px;
-                left: 350px;
-            }
-            /* .btn{
-                top: 15%;
-                left: 100px;
-                border-radius: 7px;
-                font-size: 20px;
-                background-color: rgba(134, 115, 52, 0.5);
-                color: #000000
-            } */
-            .sub {
-
-                color: #2d4e2d;
-                padding: 20px;
-                margin: 0;
-                background-color: rgba(224, 214, 181, 0.5);
-                border-radius: 15px;
-                font-size: 17px
-            }
-            .para{
-                text-align: center;
-            }
-
-
-
-
-            h1 {
-                margin: 0;
-                /* Remove default margin from the h1 tag */
-            }
-
-            * {
-
-                font-family: "Libre Baskerville", serif;
-                font-weight: 550;
-                font-style: normal;
-
-            }
-        </style>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-            rel="stylesheet">
-
-
-
-
+        }
+    </script>
 </body>
 
 </html>

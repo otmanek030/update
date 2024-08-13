@@ -7,13 +7,14 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
+    // Display all products
     public function index()
     {
         $products = Product::all();
         return view('admin.product', compact('products'));
-
     }
 
+    // Store a new product
     public function store(Request $request)
     {
         $request->validate([
@@ -35,12 +36,14 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
+    // Edit an existing product
     public function edit($id)
     {
         $product = Product::findOrFail($id);
         return view('admin.edit_product', compact('product'));
     }
 
+    // Update an existing product
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -65,6 +68,7 @@ class ProductController extends Controller
         return redirect()->route('product.index');
     }
 
+    // Delete a product
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
@@ -72,4 +76,11 @@ class ProductController extends Controller
 
         return redirect()->route('product.index');
     }
+
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('user.show', compact('product'));
+    }
+
 }

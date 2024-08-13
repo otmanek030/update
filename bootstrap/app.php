@@ -16,6 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
            'admin' => \App\Http\Middleware\Admin::class,
             'user' => \App\Http\Middleware\User::class,
             'product' => \App\Http\Middleware\Product::class,
+            'shop' => \App\Http\Middleware\Shop::class,
+            'contact' => \App\Http\Middleware\contact::class,
+            'contacts' => \App\Http\Middleware\Admincontact::class,
+            'show' => \App\Http\Middleware\Show::class,
+
+
         ]);
 
     })

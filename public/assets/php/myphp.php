@@ -18,7 +18,7 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="dashboard">
+                <a href="openu">
                     <i class='bx bx-grid-alt'></i>
                     <span class="link_name">Home</span>
                 </a>
@@ -60,7 +60,7 @@
                 </ul>
             </li>
             <li>
-                <a href="contact">
+                <a href="contacts">
                     <i class='bx bx-compass'></i>
                     <span class="link_name">Contact</span>
                 </a>

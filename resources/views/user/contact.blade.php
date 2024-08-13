@@ -69,11 +69,7 @@
 </head>
 
 <body>
-    <div>
-        @php
-            include public_path('assets/php/myphp.php');
-        @endphp
-    </div>
+
 
     <div class="contact">
         <h1 class="title">Contact</h1>

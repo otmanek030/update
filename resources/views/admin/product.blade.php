@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -20,27 +19,24 @@
 
         body {
             font-family: "Libre Baskerville", serif;
-
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
             min-height: 100vh;
             background-image: url('{{ asset('assets/image/download.jpg') }}');
             background-size: cover;
-            /* Ensure the image covers the entire background */
             background-position: center;
-            /* Center the background image */
             background-repeat: no-repeat;
-            /* Prevent the image from repeating */
+            overflow-x: hidden;
         }
 
         .container {
-            width: calc(100% - 300px);
-            /* Adjusted width for the main content */
+            width: 100%;
             max-width: 1200px;
             padding: 40px;
+            margin: auto;
+            transition: margin-right 0.3s;
+        }
+
+        .container.with-sidebar {
+            margin-right: 300px;
         }
 
         .title {
@@ -52,12 +48,12 @@
         .produit {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 70px;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .card {
-            width: 280px;
+            width: calc(33.333% - 20px);
             border-radius: 30px;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
             overflow: hidden;
@@ -102,47 +98,46 @@
 
         .sidebar {
             position: fixed;
-            right: 0;
+            right: -300px;
             top: 0;
             width: 300px;
-            /* Fixed width for the sidebar */
             height: 100%;
             padding: 20px;
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
+            border-left: 1px solid #ccc;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: right 0.3s;
         }
 
-        .sidebar.active {
-            transform: translateX(0);
+        .sidebar.show {
+            right: 0;
         }
 
-        .close-sidebar {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #2d4e2d;
+        .sidebar .form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
         }
 
-        .form input,
-        .form button {
-            width: calc(100% - 20px);
-            /* Adjust width for padding */
+        .sidebar input,
+        .sidebar button {
+            width: calc(100% - 40px);
             padding: 15px;
-            margin: 10px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
 
-        .form button {
+        .sidebar input {
+            font-size: 16px;
+        }
+
+        .sidebar button {
             background-color: #2d4e2d;
             color: white;
             border: none;
@@ -150,29 +145,34 @@
             transition: background-color 0.3s;
         }
 
-        .form button:hover {
+        .sidebar button:hover {
             background-color: #648064;
         }
 
-        .toggle-sidebar {
+        .toggle-btn {
             position: fixed;
+            right: 20px;
             top: 20px;
-            left: 20px;
+            padding: 10px 20px;
             background-color: #2d4e2d;
             color: white;
             border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            z-index: 1000;
+            z-index: 1001;
+        }
+
+        .toggle-btn:hover {
+            background-color: #648064;
         }
     </style>
 </head>
 
 <body>
-    <button class="toggle-sidebar" onclick="toggleSidebar()">☰</button>
 
-    <div class="container">
+    <button class="toggle-btn" onclick="toggleSidebar()">Add Product</button>
+
+    <div class="container" id="main-container">
         <div class="title">
             <h1>Welcome to our shop</h1>
             <hr>
@@ -202,23 +202,25 @@
         </div>
     </div>
 
-    <div class="sidebar">
-        <button class="close-sidebar" onclick="toggleSidebar()">×</button>
-        <form id="cardForm" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+    <div class="sidebar" id="sidebar">
+        <form id="cardForm" class="form" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" id="paragraphText" placeholder="Enter product name" name="pro_name" required>
             <input type="file" id="pictureUrl" accept="image/jpeg, image/png, image/jpg" name="image" required>
-            <input type="number" id="price" placeholder="Enter product price" name="price" required
-                min="0" step="0.5" required>
+            <input type="number" id="price" placeholder="Enter product price" name="price" required min="0" step="0.5">
             <button type="submit">Add New Product</button>
         </form>
     </div>
 
     <script>
         function toggleSidebar() {
-            document.querySelector('.sidebar').classList.toggle('active');
+            const sidebar = document.getElementById('sidebar');
+            const container = document.getElementById('main-container');
+            sidebar.classList.toggle('show');
+            container.classList.toggle('with-sidebar');
         }
     </script>
+
 </body>
 
 </html>
