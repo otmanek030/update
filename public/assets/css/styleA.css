@@ -1,0 +1,127 @@
+body {
+    font-family: "Libre Baskerville", serif;
+    background-color: #e8f5e9;
+    color: #2d4e2d;
+    margin: 0;
+    padding: 20px;
+}
+  /* Sidebar styles */
+.sidebar1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background: #2d4e2d;
+    color: #fff;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.sidebar1 .logo-details {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    background: #132d16;
+    border-bottom: 1px solid #153616;
+}
+
+.sidebar1 .logo-details i {
+    font-size: 30px;
+}
+
+.sidebar1 .logo_name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.sidebar1 .nav-links {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.sidebar1 .nav-links li {
+    position: relative;
+    padding: 5px 0;
+}
+
+.sidebar1 .nav-links li a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: #d3d3d3;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar1 .nav-links li a:hover {
+    background: #106b18;
+    color: #fff;
+}
+
+.sidebar1 .nav-links li .sub-menu {
+    display: none;
+    flex-direction: column;
+    background: #1f2a38;
+}
+
+.sidebar1 .nav-links li .sub-menu a {
+    padding: 10px 30px;
+    color: #b0bec5;
+}
+
+.sidebar1 .nav-links li .sub-menu a:hover {
+    background: #2c3e50;
+}
+
+.sidebar1 .profile-details {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar1 .profile-details .logout-link {
+    color: #d3d3d3;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar1 .profile-details .logout-link:hover {
+    background: #065c06;
+    color: #fff;
+}
+
+
+
+/* Toggle Button */
+.toggle-btn {
+    position: absolute;
+    left: 345px;
+    top: 20px;
+    padding: 13px 20px;
+    background-color: #1e3d1e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 80px;
+    width: 1106px;
+
+}
+
+.toggle-btn:hover {
+    background-color: #1e3d1e;
+
+}
+
+.toggle-btn.with-sidebar {
+    margin-right: 300px;
+}

@@ -1,0 +1,189 @@
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    margin: auto;
+    transition: margin-right 0.3s;
+}
+
+.container.with-sidebar {
+    margin-right: 300px;
+}
+
+
+.title {
+    text-align: center;
+    color: #2d4e2d;
+    margin-bottom: 40px;
+    margin-bottom: 90px;
+}
+
+.produit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card {
+    width: calc(33.333% - 20px);
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    border-radius: 30px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-body {
+    padding: 25px;
+    margin-top: -15px;
+    text-align: center;
+}
+
+.btn-primary {
+    border-radius: 50px;
+    width: 120px;
+    background-color: #2d4e2d;
+    border: none;
+    color: white;
+    display: inline-block; /* Aligns buttons horizontally */
+    text-align: center; /* Centers text horizontally */
+    padding: 10px 20px; /* Adds padding inside the button (optional) */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    margin: 5px; /* Adds margin between buttons */
+}
+
+.btn-primary:hover {
+    background-color: black;
+}
+
+h3, h5 {
+    color: rgb(0, 91, 228);
+}
+
+.sidebar {
+    position: fixed;
+    right: -350px;
+    top: 0;
+    width: 350px;
+    height: 100%;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-left: 1px solid #ddd;
+    box-shadow: -4px 0 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: right 0.3s;
+    overflow-y: auto;
+}
+
+.sidebar.show {
+    right: 0;
+}
+
+.sidebar .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.sidebar input, .sidebar select, .sidebar button {
+    width: calc(100% - 20px);
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.sidebar input[type="radio"] {
+    margin-right: 10px;
+}
+
+.sidebar input[type="radio"] + label {
+    margin-right: 20px;
+}
+
+.sidebar input:focus, .sidebar select:focus, .sidebar button:focus {
+    outline: none;
+    border-color: #2d4e2d;
+    box-shadow: 0 0 0 2px rgba(45, 78, 45, 0.3);
+}
+
+.sidebar button {
+    background-color: #2d4e2d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sidebar button:hover {
+    background-color: #1e3d1e;
+}
+
+.toggle-btn {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    padding: 10px 20px;
+    background-color: #2d4e2d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.toggle-btn:hover {
+    background-color: #648064;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 65px;
+    margin-bottom: 40px; /* Adjust spacing below the filter buttons */
+}
+
+.filter-buttons button {
+    background-color: #2d4e2d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-buttons button:hover, .filter-buttons button:focus {
+    background-color: #1e3d1e;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+.filter-buttons button:active {
+    background-color: #1a2c1a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+}
+

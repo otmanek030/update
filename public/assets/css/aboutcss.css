@@ -1,0 +1,178 @@
+/* Hero Section */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligns the content to the right */
+    height: 70vh;
+    margin-top: 30px;
+    background: linear-gradient(to top right, #ffffff, #d4f0db); /* Soft gradient for hero background */
+    border-radius: 10px;
+    overflow: hidden;
+    padding-right: 50px; /* Adds space between the content and the edge */
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    color: #114d19;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.295);
+    padding: 50px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* Smooth transition between images */
+}
+
+.slides.active {
+    display: block;
+    opacity: 1; /* Full opacity for the active slide */
+}
+
+/* Content Section Inside Hero */
+.content {
+    position: relative;
+    z-index: 3; /* Ensures it sits above the hero background */
+    max-width: 400px; /* Limits width for better right alignment */
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85); /* Adds a light background to make text readable */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2a9d8f; /* Softer green for headings */
+}
+
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333; /* Darker text for readability */
+}
+/* Hero Section */
+.hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligns the content to the right */
+    height: 70vh;
+    margin-top: 30px;
+    background: linear-gradient(to top right, #ffffff, #d4f0db); /* Soft gradient for hero background */
+    border-radius: 10px;
+    overflow: hidden;
+    padding-right: 50px; /* Adds space between the content and the edge */
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.9;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    color: #114d19;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.295);
+    padding: 50px;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slides {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* Smooth transition between images */
+}
+
+.slides.active {
+    display: block;
+    opacity: 1; /* Full opacity for the active slide */
+}
+
+/* Content Section Inside Hero */
+.content {
+    position: relative;
+    z-index: 3; /* Ensures it sits above the hero background */
+    max-width: 400px; /* Limits width for better right alignment */
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85); /* Adds a light background to make text readable */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #2a9d8f; /* Softer green for headings */
+}
+
+.content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333; /* Darker text for readability */
+}

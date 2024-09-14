@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        // Eager load the user and products relationships
+        $orders = Order::with('user', 'products')->get();
+        return view('admin.orders', compact('orders'));
+    }
+
     public function store(Request $request)
     {
         $request->validate([

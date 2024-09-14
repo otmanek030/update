@@ -20,7 +20,9 @@ return Application::configure(basePath: dirname(__DIR__))
             'contact' => \App\Http\Middleware\contact::class,
             'contacts' => \App\Http\Middleware\Admincontact::class,
             'show' => \App\Http\Middleware\Show::class,
-
+            'services' => \App\Http\Middleware\services::class,
+            'servicesClient' => \App\Http\Middleware\servicesClient::class,
+            'aboutus' => \App\Http\Middleware\aboutus::class,
 
         ]);
 

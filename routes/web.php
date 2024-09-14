@@ -1,28 +1,18 @@
-
 <?php
 
+use App\Http\Controllers\aboutuscontroller;
 use App\Http\Controllers\AdminContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\aboutus;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
-
-
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ServiceController;
 
 require __DIR__.'/auth.php';
 
@@ -36,17 +26,30 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('admin/products/{id}', [ProductController::class, 'update'])->name('product.update');
     Route::delete('admin/products/{id}', [ProductController::class, 'destroy'])->name('product.destroy');
     Route::get('admin/contacts', [AdminContactController::class, 'index'])->name('admin.contacts');
+    Route::get('/admin/services', [AdminController::class, 'index'])->name('admin.services.index');
+    Route::post('/admin/services/{id}', [AdminController::class, 'updateService'])->name('admin.services.update');
+    Route::post('/admin/services', [AdminController::class, 'storeService'])->name('admin.services.store');
+    Route::delete('/admin/services/{id}', [ServiceController::class, 'destroy']);
+    Route::put('/admin/services/{id}', [ServiceController::class, 'update']);
+    Route::get('/admin/orders', [OrderController::class, 'index'])->name('orders.index');
+
+
+
 });
+
+Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
 
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('user/dashboardU', [HomeController::class, 'user_indx'])->name('user.dashboard');
+    Route::get('/user/dashboardU', [HomeController::class, 'user_indx'])->name('user.dashboard');
     Route::get('user/shop', [ShopController::class, 'index'])->name('shop.index');
     Route::post('/shop/select/{id}', [ShopController::class, 'select'])->name('shop.select');
     Route::get('user/contact', [ContactController::class, 'index'])->name('contact.index');
     Route::post('contacts', [ContactController::class, 'store'])->name('contact.store');
-    Route::post('/order', [OrderController::class, 'store'])->name('order.store');
-    Route::post('/shop/order', [ShopController::class, 'store'])->name('shop.store');
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
-});
+    Route::post('/shop/store', [ShopController::class, 'store'])->name('shop.store');
+    Route::get('user/services', [UserController::class, 'serviceClient'])->name('user.services');
+    Route::get('user/aboutus', [aboutuscontroller::class, 'aboutus'])->name('user.aboutus');
 
+
+});

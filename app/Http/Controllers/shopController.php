@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ShopController extends Controller
+class shopController extends Controller
 {
     // Show the form and products
     public function index()
@@ -18,38 +19,53 @@ class ShopController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'products' => 'required|array',
-        'total_price' => 'required|numeric',
-    ]);
+    {
+        // Decode the JSON products string into an array
+        $products = json_decode($request->input('products'), true);
 
-    \Log::info('Request Data:', $request->all()); // Log request data
-
-    $order = Order::create([
-        'user_id' => auth()->id(),
-        'total_price' => $request->input('total_price'),
-    ]);
-
-    $products = json_decode($request->input('products'), true);
-    \Log::info('Decoded Products:', $products); // Log decoded products
-
-    foreach ($products as $product) {
-        $price = (float) $product['price'];
-        $quantity = (int) $product['quantity'];
-
-        $order->products()->create([
-            'product_id' => $product['id'],
-            'quantity' => $quantity,
-            'price' => $price,
+        // Validate incoming request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:20',
+            'total_price' => 'required|numeric',
+            'products' => 'required',
         ]);
+
+        // Retrieve user information and total price from the request
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+        $totalPrice = $request->input('total_price');
+
+        // Create a new order with user information
+        $order = Order::create([
+            'name' => $name,
+            'email' => $email,
+            'phone' => $phone,
+            'total_price' => $totalPrice,
+        ]);
+
+        
+
+        // Insert each product into the order_items table
+        foreach ($products as $product) {
+            OrderProduct::create([
+                'order_id' => $order->id,
+                'product_id' => $product['id'],
+                'name' => $product['name'],
+                'price' => $product['price'],
+                'quantity' => $product['quantity'],
+            ]);
+        }
+
+        // Redirect or respond to the user
+        return redirect()->back()->with('success', 'Order placed successfully!');
     }
 
-    session()->forget('selected_products');
 
-    return redirect()->route('shop.index')->with('success', 'Order placed successfully!');
-}
-    
+
+
 
 
     // Handle product selection

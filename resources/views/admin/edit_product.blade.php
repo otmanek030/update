@@ -51,6 +51,7 @@
         .form-group input[type="text"],
         .form-group input[type="file"],
         .form-group input[type="number"],
+        .form-group select,
         .form-group button {
             width: 100%;
             padding: 12px;
@@ -126,6 +127,18 @@
                 <label for="price">Product Price</label>
                 <input type="number" id="price" name="price" value="{{ $product->price }}" required min="0" step="0.01">
             </div>
+
+            <!-- Add Product Type -->
+            <div class="form-group">
+                <label for="type">Product Type</label>
+                <select id="type" name="type" required>
+                    <option value="Organic Spices" {{ $product->type == 'Organic Spices' ? 'selected' : '' }}>Organic Spices</option>
+                    <option value="Natural Skincare Products" {{ $product->type == 'Natural Skincare Products' ? 'selected' : '' }}>Natural Skincare Products</option>
+                    <option value="Organic Herbal Teas" {{ $product->type == 'Organic Herbal Teas' ? 'selected' : '' }}>Organic Herbal Teas</option>
+                    <option value="Essential Oils" {{ $product->type == 'Essential Oils' ? 'selected' : '' }}>Essential Oils</option>
+                </select>
+            </div>
+
             <div class="form-group">
                 <button type="submit">Update Product</button>
             </div>

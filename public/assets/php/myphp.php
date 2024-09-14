@@ -11,107 +11,75 @@
 </head>
 
 <body>
-    <div class="topbar close">
+    <div class="sidebar1">
         <div class="logo-details">
             <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">CodingLab</span>
+            <span class="logo_name">AdminPanel</span>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="openu">
+                <a href="dashboard">
                     <i class='bx bx-grid-alt'></i>
-                    <span class="link_name">Home</span>
+                    <span class="link_name">Dashboard</span>
                 </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Category</a></li>
-                </ul>
             </li>
             <li>
-                <div class="iocn-link">
-                    <a href="product">
-                        <i class='bx bx-book-alt'></i>
-                        <span class="link_name">Product</span>
-                    </a>
-                    <i class='bx bxs-chevron-down arrow'></i>
-                </div>
-                <ul class="sub-menu">
-                    <li><a class="link_name" href="#">Shop</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Login Form</a></li>
-                    <li><a href="#">Card Design</a></li>
-                </ul>
+                <a href="products">
+                    <i class='bx bx-book-alt'></i>
+                    <span class="link_name">Products</span>
+                </a>
             </li>
             <li>
-                <a href="service">
-                    <i class='bx bx-pie-chart-alt-2'></i>
+                <a href="services">
+                    <i class='bx bx-book-alt'></i>
                     <span class="link_name">Service</span>
                 </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="service">Service</a></li>
-                </ul>
             </li>
-            <li>
-                <a href="aboutus">
-                    <i class='bx bx-line-chart'></i>
-                    <span class="link_name">About us</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">About us</a></li>
-                </ul>
-            </li>
+            
             <li>
                 <a href="contacts">
-                    <i class='bx bx-compass'></i>
+                    <i class='bx bx-message-square-detail'></i>
                     <span class="link_name">Contact</span>
                 </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Contact</a></li>
-                </ul>
             </li>
+
             <li>
-                <a href="signin">
-                    <i class='bx bx-history'></i>
-                    <span class="link_name">Sign in</span>
+                <a href="orders">
+                    <i class='bx bx-box'></i>
+                    <span class="link_name">Order</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="signin">Sign in </a></li>
+                    <li><a class="link_name" href="#">Order</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="login">
-                    <i class='bx bx-cog'></i>
-                    <span class="link_name">Log in</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="login">Log in</a></li>
-                </ul>
-            </li>
-            <li>
-                <div class="profile-details">
-                    <div class="profile-content">
-                        <i class='bx bx-log-out'></i>
-                    </div>
-                </div>
-            </li>
+
         </ul>
+        <div class="profile-details">
+            <a class="logout-link" href="{{ route('logout') }}"
+                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class='bx bx-log-out'></i> Logout
+            </a>
+
+        </div>
     </div>
 
+
     <script>
-        let arrow = document.querySelectorAll(".arrow");
-        for (var i = 0; i < arrow.length; i++) {
-            arrow[i].addEventListener("click", (e) => {
-                let arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
-                arrowParent.classList.toggle("showMenu");
-            });
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const container = document.getElementById('main-container');
+            const add = document.getElementById('add');
+            sidebar.classList.toggle('show');
+            container.classList.toggle('with-sidebar');
+            add.classList.toggle('with-sidebar');
         }
-        let topbar = document.querySelector(".topbar");
-        let topbarBtn = document.querySelector(".bx-menu");
-        console.log(topbarBtn);
-        topbarBtn.addEventListener("click", () => {
-            topbar.classList.toggle("close");
-        });
+
+
     </script>
+
+
 </body>
+
 
 </html>
 

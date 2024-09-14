@@ -3,24 +3,26 @@
 
 <head>
     <title>Admin Contacts</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styleA.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #e9ecef;
-            color: #495057;
-        }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
+
+        }
+
+        .container .h1{
+            margin-left: 200px;
         }
 
         .search-bar {
             margin-bottom: 20px;
             text-align: center;
+            margin-left: 200px;
         }
 
         .search-bar input[type="text"] {
@@ -40,6 +42,7 @@
             display: flex;
             border: 1px solid #dee2e6;
             transition: all 0.3s ease;
+            margin-left: 200px;
         }
 
         .contact-card:hover {
@@ -91,17 +94,29 @@
             margin-bottom: 40px;
             font-weight: 700;
         }
+
+
     </style>
 </head>
 
 <body>
+
+    <body>
+        @php
+        include public_path('assets/php/myphp.php');
+        @endphp
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
     <div class="container">
         <h1>Contacts List</h1>
-        <div class="search-bar">
+        {{-- <div class="search-bar">
             <form action="{{ route('contact.index') }}" method="GET">
                 <input type="text" name="search" placeholder="Search contacts..." value="{{ request()->get('search') }}">
             </form>
-        </div>
+        </div> --}}
         @foreach($contacts as $contact)
             <div class="contact-card">
                 <div class="details">

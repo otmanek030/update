@@ -3,7 +3,12 @@
 
 <head>
     <title>Example</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css')  }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <style>
         body {
             display: flex;
@@ -12,44 +17,47 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .contact {
+            flex: 1;
+            text-align: center;
+            color: #2d4e2d;
+            padding: 20px;
+            font-size: 25px;
+            background-image: url('{{ asset('assets/image/main.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+
         }
 
         .form {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            /* Centers the form vertically */
             align-items: center;
+            /* Centers the form horizontally */
             padding: 40px;
-            border-radius: 8px;
-            background: #f4f4f4;
+            background: rgba(197, 193, 193, 0.356);
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
             width: 100%;
-            max-width: 600px;
-            margin-right: 20px;
+            max-width: 1000px;
+            height: 100vh;
+            /* Restricts the width of the form */
         }
 
-        .contact {
-            text-align: center;
-            color: #2d4e2d;
-            padding: 20px;
-            margin: 0;
-            font-size: 25px;
-            max-width: 600px; /* Increased max-width */
-            width: 20%; /* Adjusted width */
-            height: 420px;
-            background-image: url('{{ asset('assets/image/main.png') }}');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            border-top-left-radius: 50px;
-            border-bottom-left-radius: 50px;
-        }
-
-        input, textarea, button {
+        input,
+        textarea,
+        button {
             margin-bottom: 10px;
             width: 100%;
             padding: 15px;
-            border-top-right-radius: 7px;
-            border-bottom-right-radius: 7px;
+            border-radius: 7px;
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
@@ -65,15 +73,23 @@
         button:hover {
             background-color: #648064;
         }
+
+        .contact .title {
+            margin-top: 50%;
+        }
     </style>
 </head>
 
-<body>
 
+<body>
+    @php
+        include public_path('assets/php/myphp2.php');
+    @endphp
 
     <div class="contact">
         <h1 class="title">Contact</h1>
         <p>hello</p>
+
     </div>
 
     <div class="form">
@@ -86,6 +102,11 @@
             <button type="submit">submit</button>
         </form>
     </div>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+
+
 </body>
 
 </html>
