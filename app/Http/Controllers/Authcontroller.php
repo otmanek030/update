@@ -30,7 +30,7 @@ class Authcontroller extends Controller
        }
 
        if($request->user()->role === 'user'){
-            return redirect()->route('user.dashboard');
+            return redirect()->route('shop.index');
        }
 
         return redirect()->route('login');
@@ -42,7 +42,7 @@ class Authcontroller extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route('user.dashboard');
     }
 
 

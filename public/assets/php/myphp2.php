@@ -18,15 +18,7 @@
     <div class="topbar close">
 
         <ul class="nav-links">
-            <li>
-                <a href="dashboardU">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="link_name">Home</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">Category</a></li>
-                </ul>
-            </li>
+
             <li>
                 <div class="iocn-link">
                     <a href="shop">
@@ -41,15 +33,7 @@
                     <span class="link_name">Service</span>
                 </a>
 
-            <li>
-                <a href="aboutus">
-                    <i class='bx bx-line-chart'></i>
-                    <span class="link_name">About us</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li><a class="link_name" href="#">About us</a></li>
-                </ul>
-            </li>
+
             <li>
                 <a href="contact">
                     <i class='bx bx-compass'></i>

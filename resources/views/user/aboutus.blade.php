@@ -3,7 +3,7 @@
 
 <head>
     <title>About Us</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles2.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"rel="stylesheet">
@@ -23,6 +23,10 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+        }
+
+        .topbar {
+        left: 75%;
         }
 
         .topbar .nav-links li a {
@@ -95,11 +99,39 @@
 </head>
 
 <body>
-    <div>
-        @php
-            include public_path('assets/php/myphp2.php');
-        @endphp
+    <div class="topbar close">
+
+        <ul class="nav-links">
+            <li>
+                <a href="/">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Home</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Category</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="login">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">login</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">login</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="sigmup">
+                    <i class='bx bx-compass'></i>
+                    <span class="link_name">signup</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">signup</a></li>
+                </ul>
+            </li>
+
     </div>
+
     <div class="content">
         <video autoplay muted loop>
             <source src="{{ asset('assets/image/vid2.mp4') }}" type="video/mp4">

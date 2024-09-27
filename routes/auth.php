@@ -12,8 +12,8 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
-Route::get('/', [AuthController::class, 'login'])->name('login');
-Route::post('/', [AuthController::class, 'loginPost'])->name('login.post');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('/signup', [AuthController::class, 'signupPost'])->name('signup.post');
 Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');

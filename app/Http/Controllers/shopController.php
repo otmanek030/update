@@ -19,52 +19,41 @@ class shopController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Decode the JSON products string into an array
-        $products = json_decode($request->input('products'), true);
+{
+    // Validate the request data
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email',
+        'phone' => 'required|string|max:15',
+        'total_price' => 'required|numeric',
+        'products' => 'required', // This will be a JSON string of products
+    ]);
 
-        // Validate incoming request
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
-            'total_price' => 'required|numeric',
-            'products' => 'required',
-        ]);
+    // Create the order
+    $order = Order::create([
+        'name' => $request->input('name'),
+        'phone' => $request->input('phone'),
+        'email' => $request->input('email'),
+        'total_price' => $validatedData['total_price'],
+    ]);
 
-        // Retrieve user information and total price from the request
-        $name = $request->input('name');
-        $email = $request->input('email');
-        $phone = $request->input('phone');
-        $totalPrice = $request->input('total_price');
+    // Decode the products JSON string
+    $products = json_decode($validatedData['products'], true);
 
-        // Create a new order with user information
-        $order = Order::create([
-            'name' => $name,
-            'email' => $email,
-            'phone' => $phone,
-            'total_price' => $totalPrice,
-        ]);
-
-        
-
-        // Insert each product into the order_items table
-        foreach ($products as $product) {
+    // Save each product into the order_products table
+    foreach ($products as $product) {
+        if ($product['quantity'] > 0) {
             OrderProduct::create([
                 'order_id' => $order->id,
                 'product_id' => $product['id'],
-                'name' => $product['name'],
-                'price' => $product['price'],
                 'quantity' => $product['quantity'],
+                'price' => $product['price'],
             ]);
         }
-
-        // Redirect or respond to the user
-        return redirect()->back()->with('success', 'Order placed successfully!');
     }
 
-
-
+    return redirect()->back()->with('success', 'Order placed successfully!');
+}
 
 
 

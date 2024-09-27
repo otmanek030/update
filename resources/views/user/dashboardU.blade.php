@@ -3,15 +3,34 @@
 
 <head>
     <title>Herbal Green</title>
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/styles2.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <div>
-        @php
-            include public_path('assets/php/myphp2.php');
-        @endphp
+    <div class="topbar close">
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="login">
+                    <i class='bx bx-line-chart'></i>
+                    <span class="link_name">login</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">login</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="sigmup">
+                    <i class='bx bx-compass'></i>
+                    <span class="link_name">signup</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">signup</a></li>
+                </ul>
+            </li>
+
     </div>
 
     <div class="video-container">
@@ -19,7 +38,9 @@
             <source src="{{ asset('assets/image/vid.mp4') }}" type="video/mp4">
             Your browser does not support the video tag.
         </video>
-        <button class="styled-button">About Us</button>
+
+        <a href="aboutus" class="styled-button">About Us</a>
+
     </div>
 
     <div class="up">
@@ -29,9 +50,7 @@
         <div class="sub">
             <p class="para">Green presents a curated collection of preserved plant specimens, highlighting nature's beauty and diversity in one unique herbarium.</p>
         </div>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-            @csrf
-        </form>
+
     </div>
 
     <style>

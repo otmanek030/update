@@ -126,9 +126,13 @@
         <form id="order-form" method="POST" action="{{ route('shop.store') }}">
             @csrf
             <input type="hidden" name="total_price" id="hidden-total-price">
-            <input type="hidden" name="products" id="hidden-products">
-            <button type="submit" class="btn btn-primary submit-order-btn" class="place">Place Order</button>
+            <input type="hidden" name="products" id="hidden-products"> <!-- Products JSON -->
+            <input type="hidden" name="name" id="hidden-name">
+            <input type="hidden" name="email" id="hidden-email">
+            <input type="hidden" name="phone" id="hidden-phone">
+            <button type="submit" class="btn btn-primary submit-order-btn">Place Order</button>
         </form>
+
     </div>
     <div id="contact-form-popup" class="contact-form-popup">
         <div class="contact-form-content">
@@ -264,16 +268,23 @@ document.querySelectorAll('.select-product').forEach(button => {
         });
 
         document.getElementById('submit-contact-form').addEventListener('click', function() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
 
-            if (name && email && phone) {
-                document.getElementById('order-form').submit();
-            } else {
-                alert('Please fill out all fields in the contact form.');
-            }
-        });
+        if (name && email && phone) {
+            // Store contact information in hidden inputs
+            document.getElementById('hidden-name').value = name;
+            document.getElementById('hidden-email').value = email;
+            document.getElementById('hidden-phone').value = phone;
+
+            // Submit the form
+            document.getElementById('order-form').submit();
+        } else {
+            alert('Please fill out all fields in the contact form.');
+        }
+    });
+
     </script>
 </body>
 </html>

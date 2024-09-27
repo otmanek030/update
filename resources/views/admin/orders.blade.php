@@ -8,7 +8,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <style>
-       
+
 
         .container {
             max-width: 1000px;
@@ -53,6 +53,21 @@
             background-color: #dcedc8;
         }
 
+        .confirm-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .confirm-btn:hover {
+            background-color: #45a049;
+        }
+
+
 
     </style>
 </head>
@@ -82,21 +97,9 @@
                 @foreach ($orders as $order)
                 <tr>
                     <td>{{ $order->id }}</td>
-<td>
-    @if ($order->user)
-        {{ $order->user->name ?? 'N/A' }}
-    @else
-        N/A
-    @endif
-</td>
-<td>
-    @if ($order->user)
-        {{ $order->user->phone_number ?? 'N/A' }}
-    @else
-        N/A
-    @endif
-</td>
-
+                    <td>{{ $order->name ?? 'N/A' }}</td>
+                    <td>{{ $order->phone ?? 'N/A' }}</td>
+                    <td>{{ $order->email ?? 'N/A' }}</td>
                     <td>
                         <ul>
                             @forelse ($order->products as $product)
@@ -106,6 +109,13 @@
                             @endforelse
                         </ul>
                     </td>
+                    <td>
+                        <form action="{{ route('order.confirmation', $order->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="confirm-btn">Confirm Order</button>
+                        </form>
+                    </td>
+
                 </tr>
                 @endforeach
             </tbody>
