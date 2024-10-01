@@ -53,23 +53,32 @@ class Authcontroller extends Controller
     }
 
     public function signupPost(Request $request): RedirectResponse
-    {
+{
+    try {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'number' => ['required', 'string', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Insert user into the database
         $user = User::create([
             'name' => $request->name,
+            'number' => $request->number,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => 'user',
         ]);
 
         event(new Registered($user));
-
         Auth::login($user);
 
         return redirect()->route('login')->with('success', 'User created successfully');
+    } catch (\Exception $e) {
+        // Log the error
+        \Log::error($e->getMessage());
+        return back()->with('error', 'Something went wrong: ' . $e->getMessage());
     }
+}
 }

@@ -22,7 +22,7 @@
                 </ul>
             </li>
             <li>
-                <a href="sigmup">
+                <a href="signup">
                     <i class='bx bx-compass'></i>
                     <span class="link_name">signup</span>
                 </a>

@@ -13,7 +13,7 @@ return new class extends Migration
     });
 }
 
-public function down()
+public function down(): void
 {
     Schema::table('orders', function (Blueprint $table) {
         $table->string('email')->nullable()->change(); // Revert back to nullable if needed

@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class shopController extends Controller
 {
@@ -15,7 +15,11 @@ class shopController extends Controller
         $products = Product::all(); // Retrieve all products
         $selectedProducts = session('selected_products', []); // Get selected products from session
         $totalPrice = array_sum(array_column($selectedProducts, 'price')); // Calculate the total price
-        return view('user.shop', compact('products', 'selectedProducts', 'totalPrice'));
+
+        // Get the authenticated user's information
+        $user = Auth::user();
+
+        return view('user.shop', compact('products', 'selectedProducts', 'totalPrice', 'user'));
     }
 
     public function store(Request $request)
@@ -23,18 +27,22 @@ class shopController extends Controller
     // Validate the request data
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
-        'email' => 'required|email',
-        'phone' => 'required|string|max:15',
+        'email' => 'required|email|max:255',
+        'phone' => 'required|string|max:20',
         'total_price' => 'required|numeric',
         'products' => 'required', // This will be a JSON string of products
     ]);
 
-    // Create the order
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Create the order and associate it with the user
     $order = Order::create([
-        'name' => $request->input('name'),
-        'phone' => $request->input('phone'),
-        'email' => $request->input('email'),
+        'name' => $validatedData['name'],
+        'phone' => $validatedData['phone'],
+        'email' => $validatedData['email'],
         'total_price' => $validatedData['total_price'],
+        'user_id' => $user->id, // Set the user_id here
     ]);
 
     // Decode the products JSON string
@@ -57,6 +65,7 @@ class shopController extends Controller
 
 
 
+
     // Handle product selection
     public function select(Request $request, $id)
     {
@@ -64,8 +73,26 @@ class shopController extends Controller
         if ($product) {
             $selectedProducts = session('selected_products', []);
             $selectedProducts[$id] = $product;
-            session(['selected_products' => $selectedProducts]);
+            session(key: ['selected_products' => $selectedProducts]);
+
+
         }
+        $request->session()->put('selected_products', $selectedProducts);
         return redirect()->route('shop.index');
     }
+
+    public function selectedProducts(Request $request)
+{
+    // Get the authenticated user
+    $user = Auth::user();
+
+    // Fetch the user's orders along with the products
+    $orders = Order::with('orderProducts.product') // Assuming your Order model has a relationship with OrderProduct
+                   ->where('user_id', $user->id) // Filter orders by the authenticated user
+                   ->get();
+
+    return view('user.selected-products', compact('orders'));
+}
+
+
 }

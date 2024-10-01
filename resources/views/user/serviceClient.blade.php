@@ -145,12 +145,11 @@
         }
     </style>
 
-    @php
-    include public_path('assets/php/myphp2.php');
-    @endphp
+
 </head>
 
 <body>
+    @include('layouts.navbar')
     <div class="services">
         <h1>Our Services</h1>
     </div>
@@ -163,7 +162,7 @@
         </div>
         @endforeach
     </div>
-    
+
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>

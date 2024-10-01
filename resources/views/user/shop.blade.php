@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('assets/css/shop.css') }}">
 
@@ -68,12 +67,11 @@
         font-weight: bold;
     }
 
+
     </style>
 </head>
 <body>
-    @php
-        include public_path('assets/php/myphp2.php');
-    @endphp
+    @include('layouts.navbar')
     <div class="container">
         <div class="title">
             <h1>Shop</h1>
@@ -136,20 +134,20 @@
     </div>
     <div id="contact-form-popup" class="contact-form-popup">
         <div class="contact-form-content">
-            <h5>Contact Information</h5>
-            <form id="contact-form">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+    <h5>Contact Information</h5>
+    <form id="contact-form">
+        <label for="name" class="form-label">Name</label>
+        <input type="hiden" class="form-control" id="name" name="name" value="{{ old('name', $user->name ?? '') }}" required>
 
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+        <label for="email" class="form-label">Email</label>
+        <input type="hiden" class="form-control" id="email" name="email" value="{{ old('email', $user->email ?? '') }}" required>
 
-                <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone" required>
+        <label for="phone" class="form-label">Phone</label>
+        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone', $user->phone ?? '') }}" required>
 
-                <button type="button" class="btn-primary" id="submit-contact-form">Done</button>
-            </form>
-        </div>
+        <button type="button" class="btn-primary" id="submit-contact-form">Done</button>
+    </form>
+</div>
     </div>
 
     <script>

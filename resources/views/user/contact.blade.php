@@ -82,9 +82,7 @@
 
 
 <body>
-    @php
-        include public_path('assets/php/myphp2.php');
-    @endphp
+    @include('layouts.navbar') 
 
     <div class="contact">
         <h1 class="title">Contact</h1>

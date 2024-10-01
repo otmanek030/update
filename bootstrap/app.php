@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'services' => \App\Http\Middleware\services::class,
             'servicesClient' => \App\Http\Middleware\servicesClient::class,
             'aboutus' => \App\Http\Middleware\aboutus::class,
+            'selectedProducts' => \App\Http\Middleware\selectedProducts::class,
 
         ]);
 

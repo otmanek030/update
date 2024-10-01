@@ -1,5 +1,5 @@
 @extends('layouts.default')
-@section('title', 'signup')
+@section('title', 'Signup')
 @section('content')
     <!DOCTYPE html>
     <html lang="en">
@@ -26,50 +26,35 @@
                     {{ session()->get('error') }}
                 </div>
             @endif
-            <h2 id="heading">SignUp Form</h2><br>
+            <h2 id="heading">Sign Up Form</h2><br>
             <form name="form" action="{{ route('signup.post') }}" method="POST">
                 @csrf
                 <div class="input-field">
-                    <label for="first" class="form-label">Enter Firstname:</label>
-                    <input type="text" id="first" name="first" class="form-control" required>
+                    <label for="name" class="form-label">Enter Full Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
                 </div>
                 <div class="input-field">
-                    <label for="last" class="form-label">Enter Lastname:</label>
-                    <input type="text" id="last" name="last" class="form-control" required>
+                    <label for="number" class="form-label">Enter Phone Number:</label>
+                    <input type="number" id="number" name="number" class="form-control" required>
                 </div>
                 <div class="input-field">
                     <label for="email" class="form-label">Enter Email:</label>
                     <input type="email" id="email" name="email" class="form-control" required>
                 </div>
                 <div class="input-field">
-                    <label for="pass" class="form-label">Create Password:</label>
-                    <input type="password" id="pass" name="pass" class="form-control" required>
+                    <label for="password" class="form-label">Create Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
                 </div>
-                <button type="submit" id="btn" ">SignUp</button>
+                <div class="input-field">
+                    <label for="password_confirmation" class="form-label">Confirm Password:</label>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+                </div>
+                <button type="submit" id="btn" class="btn btn-primary">Sign Up</button>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
         </script>
-
-        {{--  <form name="form" action="{{ route('login.post') }}" method="POST" onsubmit="return isValid();">
-                @csrf
-                <div class="input-field">
-                    <input type="text" id="user" name="user" required>
-                    <label for="user" >Enter your email</label>
-                </div>
-                <div class="input-field">
-                    <input type="password" id="pass" name="pass"  required>
-                    <label for="pass">Enter your password</label>
-                </div>
-                <div class="forget">
-                    <label for="remember">
-                      <input type="checkbox" id="remember">
-                      <p>Remember me</p>
-                    </label>
-                </div>
-                <button type="submit" id="btn">Login</button>
-            </form> --}}
     </body>
 
     </html>

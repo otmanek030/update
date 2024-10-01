@@ -42,11 +42,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     route::post('/order-confirmation/{id}', [OrderController::class, 'confirmOrder'])->name('order.confirmation');
 
 });
-route::get('/test-email', function (){
-    Mail::raw('This is a test email', function ($message) {
-     $message->to('hhh528288@gmail.com')
-     ->subject('Test Email');});
-     return 'Test email sent.';});
 
 Route::post('/logout', [AuthController::class, 'destroy'])->name('logout');
 
@@ -58,8 +53,6 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::get('user/contact', [ContactController::class, 'index'])->name('contact.index');
     Route::post('contacts', [ContactController::class, 'store'])->name('contact.store');
     Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
-    Route::post('/shop/store', [ShopController::class, 'store'])->name('shop.store');
-    Route::get('user/services', [UserController::class, 'serviceClient'])->name('user.services');
-
-
+    route::post('/shop/store', [ShopController::class, 'store'])->name('shop.store');    Route::get('user/services', [UserController::class, 'serviceClient'])->name('user.services');
+    route::get('user/selected-products', [ShopController::class, 'selectedProducts'])->name('shop.selectedProducts');
 });
